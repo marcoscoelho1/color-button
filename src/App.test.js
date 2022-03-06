@@ -49,3 +49,33 @@ test('Test checkbox events to enable / disable blutton', () => {
   expect(colorButton).toBeEnabled()
 
 })
+
+test('Test disable color/enable colors when button is red', () => {
+  render(<App />)
+
+  const checkbox = screen.getByRole('checkbox', {name: 'Disable button'})
+  const colorButton = screen.getByRole('button', {name: 'Change to blue'})
+
+  fireEvent.click(checkbox)
+  expect(colorButton).toHaveStyle({backgroundColor: 'gray'})
+
+  fireEvent.click(checkbox)
+  expect(colorButton).toHaveStyle({backgroundColor: 'red'})
+})
+
+
+test('Test disable/enable colors when button is blue', () => {
+  render(<App />)
+
+  const checkbox = screen.getByRole('checkbox', {name: 'Disable button'})
+  const colorButton = screen.getByRole('button', {name: 'Change to blue'})
+
+  fireEvent.click(colorButton)
+  expect(colorButton).toHaveStyle({backgroundColor: 'blue'})
+
+  fireEvent.click(checkbox)
+  expect(colorButton).toHaveStyle({backgroundColor: 'gray'})
+  
+  fireEvent.click(checkbox)
+  expect(colorButton).toHaveStyle({backgroundColor: 'blue'})
+})
