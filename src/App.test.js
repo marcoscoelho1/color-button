@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
+import {replaceCamelWithSapaces} from './App'
 
 test('button has correct initial color', () => {
   render(<App />)
@@ -78,4 +79,18 @@ test('Test disable/enable colors when button is blue', () => {
   
   fireEvent.click(checkbox)
   expect(colorButton).toHaveStyle({backgroundColor: 'blue'})
+})
+
+describe('Spaces before camel-case capital letters', () =>{
+  test('Works for no inner capital letters', () => {
+    expect(replaceCamelWithSapaces('Red')).toBe('Red')
+  })
+
+  test('Works for one inner capital letter', () => {
+    expect(replaceCamelWithSapaces('MidnightBlue')).toBe('Midnight Blue')
+  })
+
+  test('Works for multiple inner capital letters', () => {
+    expect(replaceCamelWithSapaces('MediumVioletRed')).toBe('Medium Violet Red')
+  })
 })
