@@ -6,10 +6,10 @@ export const replaceCamelWithSapaces = (colorName) => {
 }
 
 function App() {
-  const [buttonColor, setButtonColor] = useState('red')
+  const [buttonColor, setButtonColor] = useState(replaceCamelWithSapaces('Medium Violet Red'))
   const [disableColorButon, setDisabledColorButton] = useState(false)
 
-  const newButtonColor = buttonColor === 'red' ? 'blue' : 'red'
+  const newButtonColor = buttonColor === 'Medium Violet Red' ? 'Midnight Blue' : 'Medium Violet Red'
 
   return (
     <div>
